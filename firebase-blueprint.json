@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Core cognitive and system profile for a LifeOS user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Global unique identifier." },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "prefs": { "type": "object", "description": "System and focus preferences." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Task": {
+      "title": "Task Node",
+      "description": "A discrete unit of work or intent.",
+      "type": "object",
+      "properties": {
+        "ownerId": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "completed"] },
+        "priority": { "type": "integer", "description": "Cognitive priority level (1-5)." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "FocusSession": {
+      "title": "Quantum Focus Session",
+      "description": "A tracked block of cognitive immersion.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "mode": { "type": "string", "enum": ["deep", "creative", "admin", "social", "recovery"] },
+        "startTime": { "type": "string", "format": "date-time" },
+        "duration": { "type": "integer" },
+        "status": { "type": "string" }
+      }
+    },
+    "WearableData": {
+      "title": "Bio-Sync Data",
+      "description": "Biological telemetry from connected devices.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "stressLevel": { "type": "integer" },
+        "heartRate": { "type": "integer" },
+        "sleepScore": { "type": "integer" },
+        "lastSync": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "User", "description": "User profile data." },
+    "/tasks/{taskId}": { "schema": "Task", "description": "Individual task nodes." },
+    "/focusSessions/{sessionId}": { "schema": "FocusSession", "description": "Historical focus logs." },
+    "/wearableData/{dataId}": { "schema": "WearableData", "description": "Bio-telemtery snapshots." },
+    "/coachMessages/{msgId}": { "schema": "object", "description": "Chat history with the AI coach." }
+  }
+}

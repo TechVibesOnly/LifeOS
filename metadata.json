@@ -1,0 +1,15 @@
+{
+  "name": "LifeOS",
+  "description": "An AI-powered personal productivity and social connection operating system featuring adaptive task optimization, accountability pods, and social mapping.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "AI-driven task scheduling",
+    "Real-time social mapping",
+    "Accountability pods",
+    "Focus mode with ambient sounds"
+  ]
+}
